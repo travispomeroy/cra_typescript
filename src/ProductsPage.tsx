@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 import {Product, mockData} from "./ProductsData";
 
 const ProductsPage: React.FC = () => {
@@ -13,9 +14,9 @@ const ProductsPage: React.FC = () => {
             <p>Welcome to React Shop where you can get all your tools for ReactJS!</p>
             <ul className="product-list">
                 {products.map(value => (
-                    <li key={value.id} className="product-list-item">
+                    <Link key={value.id} className="product-list-item" to={`/products/${value.id}`}>
                         {value.name}
-                    </li>
+                    </Link>
                 ))}
             </ul>
         </div>
