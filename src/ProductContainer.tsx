@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Prompt, RouteComponentProps} from "react-router-dom";
 import {mockData, Product} from "./ProductsData";
+import ProductPresentation from "./ProductPresentation";
 
 type Props = RouteComponentProps<{id: string}>;
 
-const ProductPage: React.FC<Props> = ({match: {params}}: Props) => {
+const ProductContainer: React.FC<Props> = ({match: {params}}: Props) => {
     const [product, setProduct] = useState<Product | undefined>(undefined);
     const [isAdded, setAdded] = useState<boolean>(false);
 
@@ -24,21 +25,7 @@ const ProductPage: React.FC<Props> = ({match: {params}}: Props) => {
         <div className="page-container">
             <Prompt message={() => "Are you sure you want to leave without buying this product?"} when={!isAdded} />
             {product ? (
-                <>
-                    <h1>{product?.name}</h1>
-                    <p>{product?.description}</p>
-                    <p className="product-price">
-                        {new Intl.NumberFormat("en-US", {
-                            currency: "USD",
-                            style: "currency"
-                        }).format(product?.price)}
-                    </p>
-                    {!isAdded && (
-                        <button type="button" onClick={handleAddClick}>
-                            Add to basket
-                        </button>
-                    )}
-                </>
+                <ProductPresentation product={product} inBasket={isAdded} onAddToBasket={handleAddClick}/>
             ) : (
                 <p>Product not found!</p>
             )}
@@ -46,4 +33,4 @@ const ProductPage: React.FC<Props> = ({match: {params}}: Props) => {
     );
 };
 
-export default ProductPage;
+export default ProductContainer;

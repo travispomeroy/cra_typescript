@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import ProductsPage from "./ProductsPage";
 import Header from "./Header";
-import ProductPage from "./ProductPage";
+import ProductContainer from "./ProductContainer";
 import NotFoundPage from "./NotFoundPage";
 import LoginPage from "./LoginPage";
 
@@ -20,7 +20,7 @@ const Routes: React.FC<RouteComponentProps> = () => {
                     <Switch>
                         <Redirect to="/products" from="/" exact />
                         <Route exact path="/products" component={ProductsPage} />
-                        <Route path="/products/:id" component={ProductPage} />
+                        <Route path="/products/:id" component={ProductContainer} />
                         <Route path="/admin">
                             <Suspense fallback={<div className="page-container">Loading...</div> }>
                                 <AdminPage />
