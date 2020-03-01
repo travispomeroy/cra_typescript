@@ -8,9 +8,9 @@ interface Props {
 }
 
 const ProductPresentation: React.FC<Props> = ({
-    product: {description, name, price},
+    product: {description, name, price, reviews},
     inBasket,
-    onAddToBasket
+    onAddToBasket,
 }: Props) => {
     const onAddToBasketClicked = () => {
         onAddToBasket();
@@ -20,6 +20,17 @@ const ProductPresentation: React.FC<Props> = ({
         <>
             <h1>{name}</h1>
             <p>{description}</p>
+            <div>
+                <ul className="product-reviews">
+                    {
+                        reviews.map(x => (
+                            <li key={x.reviewer} className="product-reviews-item">
+                                <i>&ldquo;{x.comment}&rdquo;</i> - {x.reviewer}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
             <p className="product-price">
                 {new Intl.NumberFormat("en-US", {
                     currency: "USD",
