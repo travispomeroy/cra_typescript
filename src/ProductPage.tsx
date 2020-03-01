@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {RouteComponentProps} from "react-router-dom";
+import {Prompt, RouteComponentProps} from "react-router-dom";
 import {mockData, Product} from "./ProductsData";
 
 type Props = RouteComponentProps<{id: string}>;
@@ -22,6 +22,7 @@ const ProductPage: React.FC<Props> = ({match: {params}}: Props) => {
 
     return (
         <div className="page-container">
+            <Prompt message={() => "Are you sure you want to leave without buying this product?"} when={!isAdded} />
             {product ? (
                 <>
                     <h1>{product?.name}</h1>
