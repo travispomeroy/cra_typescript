@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Routes from "./Routes";
+import RoutesWrap from "./RoutesWrap";
 
-ReactDOM.render(<Routes />, document.getElementById('root'));
+ReactDOM.render(<RoutesWrap />, document.getElementById('root'));
