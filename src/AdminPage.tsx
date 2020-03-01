@@ -4,7 +4,8 @@ import AdminProducts from "./AdminProducts";
 import AdminUsers from "./AdminUsers";
 
 const AdminPage: React.FC = () => {
-
+    // eslint-disable-next-line no-debugger
+    debugger;
     return (
         <div className="page-container">
             <h1>Admin Page</h1>
